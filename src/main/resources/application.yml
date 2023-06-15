@@ -1,0 +1,46 @@
+server:
+  port: 8091
+  servlet:
+    context-path: "/ecomm/api/"
+
+spring:
+  profiles:
+    active: staging
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy : org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate.order_by.default_null_ordering: last
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    password: rootpassword
+    url: jdbc:mysql://localhost:3306/baraq_ecomm
+    username: root
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        one-indexed-parameters: true
+
+logging:
+  level:
+    ROOT: DEBUG
+    com.zolo: INFO
+    org:
+      hibernate:
+        SQL: INFO
+        type:
+          descriptor:
+            sql:
+              BasicBinder: INFO
+
+
